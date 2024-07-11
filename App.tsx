@@ -1,11 +1,21 @@
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {DefaultTheme, PaperProvider} from 'react-native-paper';
+import Main from './src/Main';
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: 'tomato',
+    secondary: 'yellow',
+  },
+};
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaView>
-      <Text>Hello LongNote !</Text>
-    </SafeAreaView>
+    <PaperProvider theme={theme}>
+      <Main />
+    </PaperProvider>
   );
 }
 
