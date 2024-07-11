@@ -9,3 +9,7 @@ npm i
 ```
 
 - run android (need android studio, virtual machine or android phone)
+
+```
+npm run android
+```
