@@ -1,6 +1,7 @@
 import React from 'react';
 import {DefaultTheme, PaperProvider} from 'react-native-paper';
-import Main from './src/Main';
+import {NavigationContainer} from '@react-navigation/native';
+import BottomTabs from './src/components/navigator/BottomTabs';
 
 const theme = {
   ...DefaultTheme,
@@ -14,7 +15,9 @@ const theme = {
 function App(): React.JSX.Element {
   return (
     <PaperProvider theme={theme}>
-      <Main />
+      <NavigationContainer>
+        <BottomTabs />
+      </NavigationContainer>
     </PaperProvider>
   );
 }
