@@ -1,3 +1,5 @@
+import './shim';
+
 import React from 'react';
 import {DefaultTheme, PaperProvider} from 'react-native-paper';
 import {NavigationContainer} from '@react-navigation/native';

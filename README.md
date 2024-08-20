@@ -13,6 +13,10 @@
 
 - react-native-vector-icons 10.1.0
 
+#### rn-nodeify
+
+- to install fs (for colors-helper-tools)
+
 ### how to run 🦾
 
 - install modules
