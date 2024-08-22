@@ -8,9 +8,7 @@ const Settings = () => {
   const setColor = useColorStore(state => state.setColor);
 
   const handlePress = () => {
-    // TODO: fix colors-helper-tools in non node.js environment
     const randomColor = getRandomColorHex();
-    console.log('randomColor', randomColor);
     setColor(randomColor);
   };
 

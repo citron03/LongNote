@@ -1,10 +1,22 @@
 import {FlashList} from '@shopify/flash-list';
-import React, {useState} from 'react';
+import React, {ComponentProps, useState} from 'react';
 import {SafeAreaView, View, Dimensions} from 'react-native';
 import {Button, Text, TextInput} from 'react-native-paper';
 import {useColorStore} from '../../stores/color';
+import styled from '@emotion/native';
 
 const DATA = ['First !!', '2nd ㅠㅠ'];
+
+const ListView = styled.View({
+  height: 200,
+  width: Dimensions.get('screen').width,
+});
+
+const ButtonColor = styled.Button<
+  ComponentProps<typeof Button> & {color?: string}
+>`
+  background-color: ${props => `${props.color}}`};
+`;
 
 export default function Main() {
   const [inputText, setInputText] = useState('');
@@ -28,23 +40,24 @@ export default function Main() {
           value={inputText}
           onChangeText={handleOnChangeInputText}
         />
-        <Button icon="camera" mode="outlined" onPress={handlePressText}>
+        <ButtonColor
+          color={color}
+          icon="camera"
+          mode="outlined"
+          onPress={handlePressText}
+          title="add">
           Press me
-        </Button>
+        </ButtonColor>
       </View>
-      <View style={{height: 200, width: Dimensions.get('screen').width}}>
+      <ListView>
         <FlashList
           renderItem={({item, index}) => {
-            return (
-              <Text variant="labelLarge" selectionColor={color}>{`${
-                index + 1
-              }. ${item}`}</Text>
-            );
+            return <Text variant="labelLarge">{`${index + 1}. ${item}`}</Text>;
           }}
           estimatedItemSize={200}
           data={memoList}
         />
-      </View>
+      </ListView>
     </SafeAreaView>
   );
 }

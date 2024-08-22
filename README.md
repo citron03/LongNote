@@ -13,6 +13,9 @@
 
 - react-native-vector-icons 10.1.0
 
+- @emotion/native 11.11.0
+- @emotion/react 11.13.3
+
 #### rn-nodeify
 
 - to install fs (for colors-helper-tools)
