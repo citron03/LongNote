@@ -1,22 +1,15 @@
 import {FlashList} from '@shopify/flash-list';
-import React, {ComponentProps, useState} from 'react';
-import {SafeAreaView, View, Dimensions} from 'react-native';
+import React, {useState} from 'react';
 import {Button, Text, TextInput} from 'react-native-paper';
 import {useColorStore} from '../../stores/color';
-import styled from '@emotion/native';
+import {
+  SafeAreaViewWrapper,
+  InputView,
+  ItemView,
+  ListView,
+} from './Main.styled';
 
 const DATA = ['First !!', '2nd ㅠㅠ'];
-
-const ListView = styled.View({
-  height: 200,
-  width: Dimensions.get('screen').width,
-});
-
-const ButtonColor = styled.Button<
-  ComponentProps<typeof Button> & {color?: string}
->`
-  background-color: ${props => `${props.color}}`};
-`;
 
 export default function Main() {
   const [inputText, setInputText] = useState('');
@@ -32,32 +25,36 @@ export default function Main() {
   };
 
   return (
-    <SafeAreaView>
-      <Text variant="displayMedium">Hello LongNote !</Text>
-      <View>
+    <SafeAreaViewWrapper>
+      <Text variant="displayMedium">Welcome LongNote 👻</Text>
+      <InputView>
         <TextInput
           placeholder="type text !"
           value={inputText}
           onChangeText={handleOnChangeInputText}
         />
-        <ButtonColor
-          color={color}
+        <Button
+          buttonColor={color}
           icon="camera"
+          textColor="#000"
           mode="outlined"
-          onPress={handlePressText}
-          title="add">
+          onPress={handlePressText}>
           Press me
-        </ButtonColor>
-      </View>
+        </Button>
+      </InputView>
       <ListView>
         <FlashList
           renderItem={({item, index}) => {
-            return <Text variant="labelLarge">{`${index + 1}. ${item}`}</Text>;
+            return (
+              <ItemView>
+                <Text variant="bodyMedium">{`${index + 1}. ${item}`}</Text>
+              </ItemView>
+            );
           }}
           estimatedItemSize={200}
           data={memoList}
         />
       </ListView>
-    </SafeAreaView>
+    </SafeAreaViewWrapper>
   );
 }

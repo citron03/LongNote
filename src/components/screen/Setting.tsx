@@ -1,22 +1,25 @@
 import React from 'react';
-import {View} from 'react-native';
-import {Text, Button} from 'react-native-paper';
+import {Button} from 'react-native-paper';
 import {useColorStore} from '../../stores/color';
-import {getRandomColorHex} from 'colors-helper-tools';
+import {pasteltoneHex} from 'colors-helper-tools';
+import styled from '@emotion/native';
+
+const WrapperView = styled.SafeAreaView`
+  margin: 30px;
+`;
 
 const Settings = () => {
   const setColor = useColorStore(state => state.setColor);
 
   const handlePress = () => {
-    const randomColor = getRandomColorHex();
+    const randomColor = pasteltoneHex();
     setColor(randomColor);
   };
 
   return (
-    <View>
-      <Text>Settings</Text>
+    <WrapperView>
       <Button onPress={handlePress}>Set Random Color</Button>
-    </View>
+    </WrapperView>
   );
 };
 

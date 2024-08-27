@@ -6,6 +6,6 @@ interface ColorState {
 }
 
 export const useColorStore = create<ColorState>()(set => ({
-  color: '#000',
+  color: '#fff',
   setColor: color => set(() => ({color})),
 }));
